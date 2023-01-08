@@ -100,7 +100,7 @@ export class BaseRouter {
                 try {
                     const hl = req.query.hl
                     const message: IHLErrorResponse = error.options.message
-                    const translateMessage = message[`${hl}`] || message.ko
+                    const translateMessage = message[`${hl}`] || message.en
                     if (typeof translateMessage === 'string') {
 
                         error.options.message = translateMessage
