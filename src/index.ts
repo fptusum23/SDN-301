@@ -56,6 +56,7 @@ app.use(cors());
 
 app.use("/api", api);
 app.set("port", config.server.port);
+mongoose.set('strictQuery', true);
 mongoose.connect(config.database.mongo)
   .then(() => {
     console.log('Connected to DB');

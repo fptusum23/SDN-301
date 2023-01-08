@@ -3,7 +3,6 @@ import { config } from '../config'
 import { BaseError } from './errors'
 import { DocumentQuery, Model } from '../models'
 import { errorService } from '.'
-import { Sample } from '../models/collections'
 export interface ICrudOption {
   filter?: any
   limit?: number
@@ -57,9 +56,8 @@ export class CrudService<T extends Model> {
       toJson: { virtual: true }
     })
 
-    const rows = await this.exec(query)
-    // const count = await this.exec(query.count())
-    const count = await this.model.count();
+    const rows = await this.exec(query);
+    const count = await this.exec(query.clone().count())
     return { count, rows }
   }
   async getItem(option?: ICrudOption) {
